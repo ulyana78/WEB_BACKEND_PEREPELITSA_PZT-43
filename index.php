@@ -12,27 +12,27 @@
     
     <h1>Лабораторная работа №1</h1>
     <ul>
-        <li><a href="phpinfo.php">Информация phpinfo()</a></li>
-        <li><a href="hello.php">Привет всем + информация о разработчике</a></li>
-        <li><a href="variables.php">Переменные разных типов</a></li>
-        <li><a href="constants.php">Константы и предопределённые константы</a></li>
-        <li><a href="superglobals.php">Предопределённые переменные (superglobals)</a></li>
+        <li><a href="w/phpinfo.php">Информация phpinfo()</a></li>
+        <li><a href="w/hello.php">Привет всем + информация о разработчике</a></li>
+        <li><a href="w/variables.php">Переменные разных типов</a></li>
+        <li><a href="w/constants.php">Константы и предопределённые константы</a></li>
+        <li><a href="w/superglobals.php">Предопределённые переменные (superglobals)</a></li>
     </ul>
     <hr>
     <?php
     // тем контроль
     ?>
-    <?php include "lab2.php"; ?> 
-    <?php include "z2.php"; ?> 
+    <?php include "w/lab2.php"; ?> 
+    <?php include "w/z2.php"; ?> 
     <br>
     <br>
-    <?php include "z3.php"; ?> 
+    <?php include "w/z3.php"; ?> 
     <br>
     <br>
-    <?php include "z4.php"; ?> 
+    <?php include "w/z4.php"; ?> 
     <br>
     <br>
-    <?php include "z5.php"; ?> 
+    <?php include "w/z5.php"; ?> 
     <hr>
     
     <?php
@@ -56,4 +56,25 @@
     <a href="lab3/z2.php">Задание 2</a><br>
     <a href="lab3/z3.php">Задание 3</a><br>
     <a href="lab3/z4.php">Задание 4</a><br>
+
+     <hr>
+   <?php 
+    // Подключаем файлы из папки work
+    ?> 
+    <br>
+
+    <h1>Темконтроль (вариант 5)</h1>
+    
+    <a href="work/zadanie.php">Задание 1</a><br>
+    <a href="work/zadanie2.php">Задание 2</a><br>
+    <a href="work/zadanie2.php">Задание 3</a><br>
+    <a href="work/zadanie2.php">Задание 4</a><br>
+
+    <hr>
+<p><a href="Na/index.php">Лабораторная работа №22 (Вариант 16)</a></p>
+ <hr>
+
+ <h1>Индивидуальное задание</h1>
+ <a href="stroystal/index.php">Задание</a><br>
+
 </html>

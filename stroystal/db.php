@@ -4,11 +4,11 @@ $db   = 'stroystal_db'; // Имя твоей базы данных из Workbenc
 $user = 'root';         // Имя пользователя (обычно root)
 
 // СЮДА ВПИСЫВАЕШЬ СВОЙ ПАРОЛЬ:
-$pass = 'emma268015'; 
+$pass = '12345'; 
 
 $charset = 'utf8mb4';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=127.0.0.1;port=3306;dbname=$db;charset=$charset";
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

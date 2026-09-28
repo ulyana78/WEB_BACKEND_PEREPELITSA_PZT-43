@@ -9,7 +9,7 @@ $file_path = 'includes/reviews_data.txt';
 $message = '';
 
 // 1. ОБРАБОТКА ФОРМЫ (Запись в файл)
-if (isset($_POST['do_review'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_review'])) {
     $name = trim($_POST['review_name']);
     $text = trim($_POST['review_text']);
     $date = date('d.m.Y H:i');
@@ -22,17 +22,28 @@ if (isset($_POST['do_review'])) {
         // Формируем строчку для файла. Разделим данные знаками |||
         $review_line = "{$date}|||{$name}|||{$text}\n";
 
+        // ПРОВЕРКА: Если папки includes нет, создаем ее
+        if (!is_dir('includes')) {
+            mkdir('includes', 0777, true);
+        }
+
         // РАБОТА С ФАЙЛАМИ: Дописываем строчку в конец файла
-        file_put_contents($file_path, $review_line, FILE_APPEND | LOCK_EX);
-        
-        $message = "<p style='color: green; font-weight: bold; text-align: center;'>Отзыв успешно добавлен!</p>";
+        if (file_put_contents($file_path, $review_line, FILE_APPEND | LOCK_EX) !== false) {
+            $message = "<p style='color: green; font-weight: bold; text-align: center;'>Отзыв успешно добавлен!</p>";
+        } else {
+            $message = "<p style='color: red; font-weight: bold; text-align: center;'>Ошибка записи в файл! Проверьте права доступа.</p>";
+        }
     } else {
         $message = "<p style='color: red; font-weight: bold; text-align: center;'>Заполните все поля!</p>";
     }
 }
 
 // Подключаем шапку сайта
-include 'includes/header.php';
+if (file_exists('includes/header.php')) {
+    include 'includes/header.php';
+} else {
+    echo "<header style='padding: 20px; background: #00205b; color: #fff;'>Шапка (макет)</header>";
+}
 ?>
 
 <main style="padding: 160px 20px 80px 20px; background-color: #f9f9f9; min-height: 80vh; font-family: 'Montserrat', sans-serif;">
@@ -44,7 +55,7 @@ include 'includes/header.php';
 
         <?= $message; ?>
 
-        <form action="reviews.php" method="POST" style="margin-bottom: 40px; border-bottom: 2px solid #f0f0f0; padding-bottom: 30px;">
+        <form action="" method="POST" style="margin-bottom: 40px; border-bottom: 2px solid #f0f0f0; padding-bottom: 30px;">
             <div style="margin-bottom: 15px;">
                 <label style="display: block; margin-bottom: 5px; font-weight: bold;">Ваше имя:</label>
                 <input type="text" name="review_name" value="<?= isset($_SESSION['user_login']) ? htmlspecialchars($_SESSION['user_login']) : ''; ?>" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
@@ -79,15 +90,16 @@ include 'includes/header.php';
                         echo "<strong>" . htmlspecialchars($name) . "</strong>";
                         echo "<span>" . htmlspecialchars($date) . "</span>";
                         echo "</div>";
+                        // ИСПРАВЛЕНО: убран повторный htmlspecialchars при выводе текста, так как там уже есть <br>
                         echo "<p style='margin: 0; font-size: 14px; color: #333;'>" . $text . "</p>";
                         echo "</div>";
                     }
                 }
             } else {
-                echo "<p style='color: #999; italic;'>Отзывов пока нет.</p>";
+                echo "<p style='color: #999; font-style: italic;'>Отзывов пока нет.</p>";
             }
         } else {
-            echo "<p style='color: #999; italic;'>Отзывов пока нет.</p>";
+            echo "<p style='color: #999; font-style: italic;'>Отзывов пока нет.</p>";
         }
         ?>
 
@@ -96,5 +108,7 @@ include 'includes/header.php';
 
 <?php 
 // Подключаем подвал сайта
-include 'includes/footer.php'; 
+if (file_exists('includes/footer.php')) {
+    include 'includes/footer.php'; 
+}
 ?>

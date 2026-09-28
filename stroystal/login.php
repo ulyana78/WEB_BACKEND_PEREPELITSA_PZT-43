@@ -1,6 +1,7 @@
 <?php
+$cookie_login = isset($_COOKIE['remember_user']) ? htmlspecialchars($_COOKIE['remember_user']) : '';
 session_start();
-include 'Includes/db.php';
+include '../stroystal/db.php';
 
 $message = '';
 

@@ -1,6 +1,5 @@
 <?php
-// Главная страница со ссылками на задания
-// Лабораторная работа 1
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -19,25 +18,7 @@
         <li><a href="w/superglobals.php">Предопределённые переменные (superglobals)</a></li>
     </ul>
     <hr>
-    <?php
-    // тем контроль
-    ?>
-    <?php include "w/lab2.php"; ?> 
-    <?php include "w/z2.php"; ?> 
-    <br>
-    <br>
-    <?php include "w/z3.php"; ?> 
-    <br>
-    <br>
-    <?php include "w/z4.php"; ?> 
-    <br>
-    <br>
-    <?php include "w/z5.php"; ?> 
-    <hr>
-    
-    <?php
-    // Лабораторная работа 2
-    ?>
+   
     <h1>Лабораторная работа №2</h1>
     <a href="lab2/z1.php">Типы данных</a><br>
     <a href="lab2/z2.php">Операции php</a><br>
@@ -48,9 +29,7 @@
     <a href="lab2/z7.php">Использование встроенных мат. функц. и т.д.</a><br>
 
     <hr>
-    <?php
-    // Лабораторная работа 3
-    ?>
+    
     <h1>Лабораторная работа №3</h1>
     <a href="lab3/z1.php">Задание 1 GET</a><br>
     <a href="lab3/z2.php">Задание 2</a><br>
@@ -58,23 +37,8 @@
     <a href="lab3/z4.php">Задание 4</a><br>
 
      <hr>
-   <?php 
-    // Подключаем файлы из папки work
-    ?> 
-    <br>
 
-    <h1>Темконтроль (вариант 5)</h1>
-    
-    <a href="work/zadanie.php">Задание 1</a><br>
-    <a href="work/zadanie2.php">Задание 2</a><br>
-    <a href="work/zadanie2.php">Задание 3</a><br>
-    <a href="work/zadanie2.php">Задание 4</a><br>
-
-    <hr>
-<p><a href="Na/index.php">Лабораторная работа №22 (Вариант 16)</a></p>
- <hr>
-
- <h1>Индивидуальное задание</h1>
- <a href="stroystal/index.php">Задание</a><br>
-
+    <h1>Индивидуальное задание</h1>
+    <a href="stroystal/index.php">Задание</a><br>
+</body>
 </html>

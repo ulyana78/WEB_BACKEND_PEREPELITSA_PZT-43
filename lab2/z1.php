@@ -1,18 +1,43 @@
 <?php 
-echo "<h2>Типы данных</h2>";
+echo "<h2>Типы данных в PHP</h2>";
 
-$int = 18;                 // целое
-$float = 2.31;             // вещественное
-$string = "Привет";        // строка
-$bool = true;              // логическое значение (true/false)
-$array = [1, 2, 3];        // массив
+/* Скалярные типы */
+$int = 18;                 // целое число (integer)
+$float = 2.31;             // вещественное число (float)
+$string = "Привет";        // строка (string)
+$bool = true;              // логический тип (boolean)
+
+/* Составные типы */
+$array = [1, 2, 3];        // массив (array)
+
+class Person {}            // создаём простой класс
+$object = new Person();    // объект (object)
+
+/* Специальные типы */
 $nullVar = null;           // null
+$resource = fopen(__FILE__, "r"); // ресурс (resource)
 
-echo "int = $int<br>"; // выводим значение переменной $int
-echo "float = $float<br>"; // выводим число с дробью
-echo "string = $string<br>"; // выводим строку
-echo "bool = " . ($bool ? "true" : "false") . "<br>"; // выводим 
-echo "array[0] = {$array[0]}<br>"; // выводим первый элемент массива
-echo "null = "; //  var_dump() показывает тип и значение переменной
+echo "<h3>Скалярные типы</h3>";
+echo "integer = $int<br>";
+echo "float = $float<br>";
+echo "string = $string<br>";
+echo "boolean = " . ($bool ? "true" : "false") . "<br><br>";
+
+echo "<h3>Составные типы</h3>";
+echo "array[0] = {$array[0]}<br>";
+echo "object = ";
+var_dump($object);
+echo "<br><br>";
+
+echo "<h3>Специальные типы</h3>";
+echo "null = ";
 var_dump($nullVar);
+echo "<br>";
+
+echo "resource = ";
+var_dump($resource);
+echo "<br>";
+
+// закрываем ресурс
+fclose($resource);
 ?>
